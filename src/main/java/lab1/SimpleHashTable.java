@@ -34,7 +34,7 @@ public class SimpleHashTable<K, V> implements ISimpleHashTable<K, V>, Iterable<V
         int firstPos = key.hashCode() % array.length;
         //элемент в массиве находится правее хэша, если он вообще там есть
         for (int i = firstPos; i < array.length; i++) {
-            if (array[i].key.equals(key)) {
+            if (array[i] != null && array[i].key.equals(key)) {
                 return array[i].value;
             }
         }
@@ -67,7 +67,7 @@ public class SimpleHashTable<K, V> implements ISimpleHashTable<K, V>, Iterable<V
         int firstPos = key.hashCode() % array.length;
         // находим и удаляем к чёрту
         for (int i = firstPos; i < array.length; i++) {
-            if (array[i].key.equals(key)) {
+            if (array[i] != null && array[i].key.equals(key)) {
                 V entry = array[i].value;
                 array[i] = null;
                 count--;
